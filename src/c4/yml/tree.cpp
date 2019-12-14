@@ -1009,7 +1009,7 @@ struct ReferenceResolver
 
     void _store_anchors_and_refs(size_t n)
     {
-        if(t->is_key_ref(n) || t->is_val_ref(n) || t->has_key(n) && t->key(n) == "<<")
+        if(t->is_key_ref(n) || t->is_val_ref(n) || (t->has_key(n) && t->key(n) == "<<"))
         {
             if(t->is_seq(n))
             {
