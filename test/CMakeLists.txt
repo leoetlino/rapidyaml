@@ -122,7 +122,7 @@ if(RYML_TEST_SUITE)
 
     ryml_add_executable(ryml-test-suite
         SOURCES suite.cpp
-        LIBS ryml c4fs c4log gtest
+        LIBS ryml ryml_util_test c4log
         FOLDER ryml-test)
     if(RYML_DBG)
         target_compile_definitions(ryml-test-suite PRIVATE RYML_DBG)

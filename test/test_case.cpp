@@ -38,51 +38,51 @@ void test_compare(Tree const& a, size_t node_a, size_t pos_a,
     ASSERT_LT(node_b, b.capacity());
 
     EXPECT_EQ(a.type(node_a), b.type(node_b));
-    
+
     EXPECT_EQ(a.has_key(node_a), b.has_key(node_b));
     if(a.has_key(node_a) && b.has_key(node_b))
     {
         EXPECT_EQ(a.key(node_a), b.key(node_b));
     }
-    
+
     EXPECT_EQ(a.has_val(node_a), b.has_val(node_b));
     if(a.has_val(node_a) && b.has_val(node_b))
     {
         EXPECT_EQ(a.val(node_a), b.val(node_b));
     }
-    
+
     EXPECT_EQ(a.has_key_tag(node_a), b.has_key_tag(node_b));
     if(a.has_key_tag(node_a) && b.has_key_tag(node_b))
     {
         EXPECT_EQ(a.key_tag(node_a), b.key_tag(node_b));
     }
-    
+
     EXPECT_EQ(a.has_val_tag(node_a), b.has_val_tag(node_b));
     if(a.has_val_tag(node_a) && b.has_val_tag(node_b))
     {
         EXPECT_EQ(a.val_tag(node_a), b.val_tag(node_b));
     }
-  
+
     EXPECT_EQ(a.has_key_anchor(node_a), b.has_key_anchor(node_b));
     if(a.has_key_anchor(node_a) && b.has_key_anchor(node_b))
     {
         EXPECT_EQ(a.key_anchor(node_a), b.key_anchor(node_b));
     }
-    
+
     EXPECT_EQ(a.has_val_anchor(node_a), b.has_val_anchor(node_b));
     if(a.has_val_anchor(node_a) && b.has_val_anchor(node_b))
     {
         EXPECT_EQ(a.val_anchor(node_a), b.val_anchor(node_b));
     }
 
-    // check that the children are in the same order
     EXPECT_EQ(a.num_children(node_a), b.num_children(node_b));
-    for(size_t ia = a.first_child(node_a),
-               ib = b.first_child(node_b),
-               pa = 0,
-               pb = 0;
+    for(size_t ia = a.first_child(node_a), pa = 0,
+               ib = b.first_child(node_b), pb = 0;
         ia != NONE && ib != NONE;
-        ia = a.next_sibling(ia), ib = b.next_sibling(ib), ++pa, ++pb)
+        ia = a.next_sibling(ia),
+            ib = b.next_sibling(ib),
+            ++pa,
+            ++pb)
     {
         test_compare(a, ia, pa, b, ib, pb, level+1);
     }
@@ -133,6 +133,7 @@ TEST(CaseNode, setting_up)
     N n2(tl2);
     ASSERT_EQ(n1.reccount(), n2.reccount());
 }
+
 
 //-----------------------------------------------------------------------------
 //-----------------------------------------------------------------------------
