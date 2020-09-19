@@ -925,7 +925,7 @@ bool Parser::_handle_map_expl()
         if(has_all(SSCL))
         {
             _c4dbgp("the last val was null");
-            _append_key_val("~");
+            _append_key_val("");
             rem_flags(RVAL);
         }
         _pop_level();
@@ -1019,7 +1019,7 @@ bool Parser::_handle_map_expl()
         else if(rem.begins_with(','))
         {
             _c4dbgp("prev scalar was a key with null value");
-            _append_key_val("~");
+            _append_key_val("");
             _line_progressed(1);
             return true;
         }
@@ -1028,7 +1028,7 @@ bool Parser::_handle_map_expl()
             _c4dbgp("map terminates after a key...");
             RYML_ASSERT(has_all(SSCL));
             _c4dbgp("the last val was null");
-            _append_key_val("~");
+            _append_key_val("");
             rem_flags(RVAL);
             if(has_all(RSEQIMAP))
             {
@@ -1054,7 +1054,7 @@ bool Parser::_handle_map_expl()
         }
         else if(rem.begins_with('}'))
         {
-            _append_key_val("~");
+            _append_key_val("");
             _line_progressed(1);
             return true;
         }
@@ -2933,7 +2933,7 @@ bool Parser::_handle_indentation()
         {
             if(has_all(RMAP))
             {
-                _append_key_val("~");
+                _append_key_val("");
                 addrem_flags(RKEY, RVAL);
             }
             else if(has_all(RSEQ))
@@ -2971,7 +2971,7 @@ bool Parser::_handle_indentation()
             if(has_all(RMAP))
             {
                 RYML_ASSERT(has_all(SSCL));
-                _append_key_val("~");
+                _append_key_val("");
             }
             else if(has_all(RSEQ))
             {
